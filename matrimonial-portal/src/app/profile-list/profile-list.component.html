@@ -1,0 +1,7 @@
+<h2>Profile List</h2>
+<ul>
+  <li *ngFor="let profile of profiles">
+    <a [routerLink]="['/profile', profile.id]">{{ profile.name }}, {{ profile.age }}</a>
+  </li>
+</ul>
+

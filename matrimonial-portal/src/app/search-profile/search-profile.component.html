@@ -1,0 +1,33 @@
+<div class="container">
+  <h2 class="s">Search Profile</h2>
+  <form [formGroup]="searchForm" (ngSubmit)="onSearch()" class="search-form">
+    <div>
+      <label for="caste">Caste:</label>
+      <select id="caste" formControlName="caste">
+        <option value="">Select Caste</option>
+        <option *ngFor="let caste of castes" [value]="caste">{{ caste }}</option>
+      </select>
+      <div *ngIf="searchForm.get('caste')?.invalid && searchForm.get('caste')?.touched" class="error-message">
+        Caste is required.
+      </div>
+    </div>
+    <button type="submit" [disabled]="searchForm.invalid">Search</button>
+  </form>
+
+  <div *ngIf="profiles.length > 0" class="profiles-list">
+    <h3>Profiles</h3>
+    <div *ngFor="let profile of profiles" class="profile-item">
+      <p><strong>Name:</strong> {{ profile.name }}</p>
+      <p><strong>Age:</strong> {{ profile.age }}</p>
+      <p><strong>Bio:</strong> {{ profile.bio }}</p>
+      <p><strong>Mother Tongue:</strong> {{ profile.motherTongue }}</p>
+      <p><strong>Religion:</strong> {{ profile.religion }}</p>
+      <p><strong>Caste:</strong> {{ profile.caste }}</p>
+      <p><strong>Education:</strong> {{ profile.education }}</p>
+      <hr>
+    </div>
+  </div>
+  <div *ngIf="profiles.length === 0 && searchForm.get('caste')?.touched" class="no-profiles">
+    <p>No profiles found for the selected caste.</p>
+  </div>
+</div>

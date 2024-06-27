@@ -1,0 +1,81 @@
+<h2 class="p">Create Profile</h2>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" formControlName="name">
+    <div *ngIf="profileForm.get('name')?.invalid && profileForm.get('name')?.touched" class="error-message">
+      Name is required.
+    </div>
+  </div>
+
+  <div>
+    <label for="age">Age:</label>
+    <input type="number" id="age" formControlName="age">
+    <div *ngIf="profileForm.get('age')?.invalid && profileForm.get('age')?.touched" class="error-message">
+      Age is required and must be at least 18.
+    </div>
+  </div>
+
+  <div>
+    <label for="bio">Bio:</label>
+    <textarea id="bio" formControlName="bio"></textarea>
+  </div>
+
+  <div>
+    <label for="motherTongue">Mother Tongue:</label>
+    <select id="motherTongue" formControlName="motherTongue">
+      <option value="">Select Mother Tongue</option>
+      <option value="English">English</option>
+      <option value="Spanish">Spanish</option>
+      <option value="French">French</option>
+      <!-- Add more options as needed -->
+    </select>
+    <div *ngIf="profileForm.get('motherTongue')?.invalid && profileForm.get('motherTongue')?.touched" class="error-message">
+      Mother Tongue is required.
+    </div>
+  </div>
+
+  <div>
+    <label for="religion">Religion:</label>
+    <select id="religion" formControlName="religion">
+      <option value="">Select Religion</option>
+      <option value="Christianity">Christianity</option>
+      <option value="Islam">Islam</option>
+      <option value="Hinduism">Hinduism</option>
+      <!-- Add more options as needed -->
+    </select>
+    <div *ngIf="profileForm.get('religion')?.invalid && profileForm.get('religion')?.touched" class="error-message">
+      Religion is required.
+    </div>
+  </div>
+
+  <div>
+    <label for="caste">Caste:</label>
+    <select id="caste" formControlName="caste">
+      <option value="">Select Caste</option>
+      <option value="Upper Caste">Upper Caste</option>
+      <option value="Lower Caste">Lower Caste</option>
+      <option value="Other">Other</option>
+      <!-- Add more options as needed -->
+    </select>
+    <div *ngIf="profileForm.get('caste')?.invalid && profileForm.get('caste')?.touched" class="error-message">
+      Caste is required.
+    </div>
+  </div>
+
+  <div>
+    <label for="education">Education:</label>
+    <select id="education" formControlName="education">
+      <option value="">Select Education</option>
+      <option value="High School">High School</option>
+      <option value="Bachelor's Degree">Bachelor's Degree</option>
+      <option value="Master's Degree">Master's Degree</option>
+      <!-- Add more options as needed -->
+    </select>
+    <div *ngIf="profileForm.get('education')?.invalid && profileForm.get('education')?.touched" class="error-message">
+      Education is required.
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="profileForm.invalid">Create Profile</button>
+</form>
